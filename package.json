@@ -1,0 +1,33 @@
+{
+  "name": "simple-sns",
+  "version": "1.0.0",
+  "description": "simple sns SPA using react&redux",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.0",
+    "material-ui": "^0.16.6",
+    "lodash": "^4.14.*",
+    "axios": "^0.15.3"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2",
+    "babel-cli": "^6.0.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-plugin-transform-async-to-generator": "^6.5.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-react": "*"
+  },
+  "repository": "git@github.com:yoshiya0503/simple-sns.git",
+  "author": "yoshiya0503 <myon53@gmail.com>",
+  "license": "MIT"
+}
