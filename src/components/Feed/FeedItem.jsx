@@ -16,6 +16,7 @@ class FeedItem extends Component {
       <Card>
         <CardHeader
           title={this.props.feed.user.name}
+          avatar={this.props.feed.user.image}
         />
         <CardTitle title={this.props.feed.title} />
         <CardText>
@@ -36,6 +37,7 @@ FeedItem.propTypes = {
     body: PropTypes.string.isRequired,
     user: PropTypes.shape({
       name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
