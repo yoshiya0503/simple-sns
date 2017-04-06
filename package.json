@@ -9,6 +9,9 @@
     "build-prd": "NODE_ENV=production webpack --config config/webpack.config.prd.babel.js"
   },
   "dependencies": {
+    "express": "^4.15.2",
+    "body-parser": "*",
+    "morgan": "*",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-tap-event-plugin": "^2.0.0",
