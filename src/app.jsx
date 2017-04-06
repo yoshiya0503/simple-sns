@@ -9,11 +9,14 @@ import { render } from 'react-dom';
 class App extends Component {
   constructor() {
     super();
-    this.a = 10;
+    this.t = 100;
+    console.log(process.env);
   }
   render() {
     return (
-      <div>test</div>
+      <div>
+        <p>env: { process.env.HOST } </p>
+      </div>
     );
   }
 }

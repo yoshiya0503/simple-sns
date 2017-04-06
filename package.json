@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "simple sns SPA using react&redux",
   "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config config/webpack.config.dev.babel.js",
+    "build-stg": "webpack --config config/webpack.config.stg.babel.js",
+    "build-prd": "NODE_ENV=production webpack --config config/webpack.config.prd.babel.js"
+  },
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -13,6 +18,7 @@
   },
   "devDependencies": {
     "webpack": "^2.3.3",
+    "webpack-merge": "^4.1.0",
     "webpack-dev-server": "^2.4.2",
     "babel-cli": "^6.0.0",
     "babel-core": "^6.21.0",

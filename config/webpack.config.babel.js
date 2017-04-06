@@ -3,12 +3,12 @@
  * @name webpack.config.js
  * @author Yoshiya Ito <myon53@gmail.com>
  */
-const path = require('path');
+import path from 'path';
 
-const src = path.resolve(__dirname, 'src');
-const dist = path.resolve(__dirname, 'dist');
+const src = path.resolve(__dirname, '../src');
+const dist = path.resolve(__dirname, '../dist');
 
-module.exports = {
+export default {
   entry: [
     `${src}/App.jsx`,
   ],
