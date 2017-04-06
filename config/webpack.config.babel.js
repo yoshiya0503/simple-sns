@@ -10,7 +10,7 @@ const dist = path.resolve(__dirname, '../dist');
 
 export default {
   entry: [
-    `${src}/App.jsx`,
+    `${src}/index.jsx`,
   ],
 
   output: {
@@ -21,6 +21,11 @@ export default {
   devServer: {
     contentBase: 'dist',
     port: 8000,
+  },
+
+  // resole path
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 
   // JSX ES2015
