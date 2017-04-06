@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "simple sns SPA using react&redux",
   "main": "index.js",
+  "engines": {
+      "node": "~7.2.0",
+      "npm": "3.10.9"
+  },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.config.dev.babel.js",
     "build-stg": "webpack --config config/webpack.config.stg.babel.js",
@@ -16,8 +20,12 @@
     "react-dom": "^15.4.2",
     "react-tap-event-plugin": "^2.0.0",
     "material-ui": "^0.16.6",
+    "redux": "^3.6.0",
+    "react-redux": "^5.0.3",
+    "react-router-redux": "^4.0.8",
     "lodash": "^4.14.*",
-    "axios": "^0.15.3"
+    "axios": "^0.15.3",
+    "moment": "^2.17.0"
   },
   "devDependencies": {
     "webpack": "^2.3.3",
