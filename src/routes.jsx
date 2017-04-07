@@ -4,9 +4,10 @@
  * @author Yoshiya Ito <myon53@gmail.com>
  */
 import React, { Component } from 'react';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, hashHistory } from 'react-router';
 import Profile from './components/Profile';
-import { Header } from './components/Header';
+import Layout from './components/Layout';
+import Login from './components/Login';
 import { FeedItems } from './components/Feed';
 
 class ProfileWrapper extends Component {
@@ -59,7 +60,8 @@ class Routes extends Component {
   render() {
     return (
       <Router history={hashHistory} >
-        <Route path="/" component={Header} >
+        <Route path="/login" component={Login} />
+        <Route path="/" component={Layout} >
           <Route path="/profile" component={ProfileWrapper} />
           <Route path="/feed" component={FeedItemsWrapper} />
         </Route>

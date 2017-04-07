@@ -5,7 +5,8 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { Card, CardHeader } from 'material-ui/Card';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
+
 
 class Profile extends Component {
 
@@ -17,6 +18,16 @@ class Profile extends Component {
           subtitle={this.props.user.profile}
           avatar={this.props.user.image}
         />
+        <CardText>
+          これはサンプル これはサンプル これはサンプル これはサンプル
+          <br />
+          これはサンプル これはサンプル これはサンプル これはサンプル
+          <br />
+          これはサンプル これはサンプル これはサンプル これはサンプル
+          <br />
+          これはサンプル これはサンプル これはサンプル これはサンプル
+          <br />
+        </CardText>
       </Card>
     );
   }

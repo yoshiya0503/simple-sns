@@ -8,8 +8,6 @@ import { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Routes from './routes';
 
-//import { FeedItems } from './components/Feed';
-
 class App extends Component {
 
   render() {
