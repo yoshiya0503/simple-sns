@@ -5,15 +5,22 @@
  */
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import reducer from './reducers';
 import Routes from './routes';
+
+const store = createStore(reducer);
 
 class App extends Component {
 
   render() {
     return (
       <MuiThemeProvider>
-        <Routes />
+        <Provider store={store}>
+          <Routes />
+        </Provider>
       </MuiThemeProvider>
     );
   }

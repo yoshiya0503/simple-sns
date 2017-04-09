@@ -13,7 +13,7 @@ const styles = {
     bottom: 50,
     width: '100%',
     height: '50px',
-    'text-align': 'center',
+    textAlign: 'center',
   },
 };
 

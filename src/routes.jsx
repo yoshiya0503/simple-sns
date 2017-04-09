@@ -7,7 +7,8 @@ import React, { Component } from 'react';
 import { Router, Route, hashHistory } from 'react-router';
 import Profile from './components/Profile';
 import Layout from './components/Layout';
-import Login from './components/Login';
+import Login from './containers/Login';
+import NotFound from './components/NotFound';
 import { FeedItems } from './components/Feed';
 
 class ProfileWrapper extends Component {
@@ -65,6 +66,7 @@ class Routes extends Component {
           <Route path="/profile" component={ProfileWrapper} />
           <Route path="/feed" component={FeedItemsWrapper} />
         </Route>
+        <Route path="*" component={NotFound} />
       </Router>
     );
   }
