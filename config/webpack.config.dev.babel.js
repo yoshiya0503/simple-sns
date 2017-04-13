@@ -12,7 +12,7 @@ const devConfig = {
   // plugins
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.HOST': JSON.stringify('dev.sns.me'),
+      'process.env.HOST': JSON.stringify('localhost:3000'),
     }),
   ],
 };

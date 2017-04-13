@@ -5,11 +5,11 @@
  */
 import React, { Component } from 'react';
 import { Router, Route, hashHistory } from 'react-router';
-import Profile from './components/Profile';
 import Layout from './components/Layout';
-import Login from './containers/Login';
 import NotFound from './components/NotFound';
-import { FeedItems } from './components/Feed';
+import Login from './containers/Login';
+import Profile from './containers/Profile';
+import Feed from './containers/Feed';
 
 class ProfileWrapper extends Component {
   constructor() {
@@ -27,35 +27,6 @@ class ProfileWrapper extends Component {
   }
 }
 
-class FeedItemsWrapper extends Component {
-  constructor() {
-    super();
-    this.feeds = [
-      {
-        id: 1,
-        title: 'this is the one',
-        body: 'this is the one of the feeds id = 1, have a nice day',
-        user: {
-          name: 'yoshiya ito',
-          image: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
-        },
-      },
-      {
-        id: 2,
-        title: 'this is the two',
-        body: 'this is the one of the feeds id = 2, have a nice day',
-        user: {
-          name: 'yoshiya ito',
-          image: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
-        },
-      },
-    ];
-  }
-  render() {
-    return <FeedItems feeds={this.feeds} />;
-  }
-}
-
 class Routes extends Component {
 
   render() {
@@ -64,7 +35,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/" component={Layout} >
           <Route path="/profile" component={ProfileWrapper} />
-          <Route path="/feed" component={FeedItemsWrapper} />
+          <Route path="/feed" component={Feed} />
         </Route>
         <Route path="*" component={NotFound} />
       </Router>

@@ -14,8 +14,8 @@ import FeedItem from './FeedItem';
 class FeedItems extends Component {
 
   createFeedList() {
+    console.log(this.props.feeds)
     return _.map(this.props.feeds, (feed) => {
-      console.log('createFeedList');
       return (
         <div>
           <FeedItem feed={feed} />

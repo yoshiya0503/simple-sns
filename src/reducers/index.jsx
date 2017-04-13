@@ -3,19 +3,13 @@
  * @name index.jsx
  * @author Yoshiya Ito <myon53@gmail.com>
  */
-import _ from 'lodash';
+import { combineReducers } from 'redux';
+import feed from './feed';
+import profile from './profile';
+import login from './login';
 
-const initialState = {
-  test: 0,
-};
-
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case 'INCREMENTS':
-      return _.assign({}, state, { test: state.test + action.test });
-    case 'DECREMENTS':
-      return _.assign({}, state, { test: state.test - action.test });
-    default:
-      return state;
-  }
-};
+export default combineReducers({
+  feed,
+  profile,
+  login,
+});

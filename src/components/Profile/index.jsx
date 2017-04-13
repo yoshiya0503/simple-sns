@@ -14,9 +14,9 @@ class Profile extends Component {
     return (
       <Card>
         <CardHeader
-          title={this.props.user.name}
-          subtitle={this.props.user.profile}
-          avatar={this.props.user.image}
+          title={this.props.profile.name}
+          subtitle={this.props.profile.profile}
+          avatar={this.props.profile.image}
         />
         <CardText>
           これはサンプル これはサンプル これはサンプル これはサンプル
@@ -34,7 +34,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  user: PropTypes.shape({
+  profile: PropTypes.shape({
     name: PropTypes.string.isRequired,
     profile: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,

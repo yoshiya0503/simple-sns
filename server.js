@@ -15,22 +15,20 @@ class Feed {
     this.list = [
       {
         id: 1,
-        title: 'this is first topic',
-        body: 'hello world',
+        title: 'this is the one',
+        body: 'this is the one of the feeds id = 1, have a nice day',
         user: {
-          id: 1,
-          name: 'user1',
-          img: 'image',
+          name: 'yoshiya ito',
+          image: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
         },
       },
       {
         id: 2,
-        title: 'this is second topic',
-        body: 'hello world',
+        title: 'this is the two',
+        body: 'this is the one of the feeds id = 2, have a nice day',
         user: {
-          id: 2,
-          name: 'user2',
-          img: 'image',
+          name: 'yoshiya ito',
+          image: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
         },
       },
       {
@@ -40,7 +38,7 @@ class Feed {
         user: {
           id: 3,
           name: 'user3',
-          img: 'image',
+          image: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
         },
       },
     ];
@@ -67,8 +65,29 @@ class Feed {
   }
 }
 
-var feed = new Feed();
+class Profile {
+  constructor() {
+    this.data = {
+      id: 1,
+      name: 'yoshiya ito',
+      profile: '六畳一間の世界征服',
+      image: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
+    };
+  }
 
+  fetch() {
+    return this.data;
+  }
+}
+
+var feed = new Feed();
+var profile = new Profile();
+
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(morgan({ format: 'dev', immediate: true }));
@@ -76,20 +95,26 @@ server.use(morgan({ format: 'dev', immediate: true }));
 server.get('/', (req, res) => {
   res.json({});
 });
+
+// CRUD of profile
+server.get('/api/v1/profile', (req, res) => {
+  res.json(profile.fetch());
+});
+
 // CRUD of feeds
-server.get('/api/v1/feed', (req, res) => {
+server.get('/api/v1/feeds', (req, res) => {
   res.json(feed.fetch());
 });
-server.get('/api/v1/feed/:id', (req, res) => {
+server.get('/api/v1/feeds/:id', (req, res) => {
   res.json(feed.show(req.params.id));
 });
-server.post('/api/v1/feed/:id', (req, res) => {
+server.post('/api/v1/feeds/:id', (req, res) => {
   res.json(feed.show(req.params.id));
 });
-server.put('/api/v1/feed/:id', (req, res) => {
+server.put('/api/v1/feeds/:id', (req, res) => {
   res.json(feed.show(req.params.id));
 });
-server.delete('/api/v1/feed/:id', (req, res) => {
+server.delete('/api/v1/feeds/:id', (req, res) => {
   res.json(feed.show(req.params.id));
 });
 

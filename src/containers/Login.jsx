@@ -3,25 +3,34 @@
  * @name Login.jsx
  * @author Yoshiya Ito <myon53@gmail.com>
  */
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Login from '../components/Login';
-import { increments } from '../actions';
+import { increments, decrements } from '../actions/login';
 
-function mapStateToProps(state) {
-  return {
-    test: state.test,
-  };
-}
+const mapStateToProps = state => ({
+  test: state.login.test,
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    increments: () => {
-      dispatch(increments(10));
-    },
-  };
+const mapDispatchToProps = dispatch => ({
+  increments: () => {
+    dispatch(increments(10));
+  },
+  decrements: () => {
+    dispatch(decrements(4));
+  },
+});
+
+class LoginContainer extends Component {
+
+  render() {
+    return (
+      <Login increments={this.props.increments} test={this.props.test} />
+    );
+  }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Login);
+)(LoginContainer);
