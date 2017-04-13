@@ -42,35 +42,3 @@ export default {
     ],
   },
 };
-/*
-//const webpack = require('webpack');
-module.exports = {
-  //entry: ['babel-polyfill', './index.js'],
-  entry: [
-    './src/App.jsx',
-  ],
-
-  output: {
-    path: 'dist',
-    filename: 'bundle.js',
-  },
-
-  // JSX ES2015
-  module: {
-    loaders: [
-      {
-        test: /\.js/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react']
-        }
-      }
-    ]
-  },
-
-  //plugins: [
-  //  new webpack.optimize.UglifyJsPlugin()
-  //]
-};
-*/
