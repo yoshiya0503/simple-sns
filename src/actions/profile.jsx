@@ -32,7 +32,8 @@ const fetchProfileFailed = err => (
 export default () => (
   (dispatch) => {
     dispatch(fetchProfileLoading());
-    return axios.get('http://localhost:3000/api/v1/profile').then((res) => {
+    const url = `http://${process.env.HOST}/api/v1/profile`;
+    return axios.get(url).then((res) => {
       dispatch(fetchProfileSuccess(res.data));
     }).catch((err) => {
       dispatch(fetchProfileFailed(err));
