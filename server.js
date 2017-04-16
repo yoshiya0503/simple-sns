@@ -98,7 +98,9 @@ server.get('/', (req, res) => {
 
 // CRUD of profile
 server.get('/api/v1/profile', (req, res) => {
-  res.json(profile.fetch());
+  setTimeout(() => {
+    return res.json(profile.fetch());
+  }, 1000);
 });
 
 // CRUD of feeds

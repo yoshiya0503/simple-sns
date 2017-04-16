@@ -8,7 +8,7 @@ import _ from 'lodash';
 const initialState = {
   profile: {},
   isLoading: true,
-  err: {},
+  error: {},
 };
 
 export default (state = initialState, action) => {
@@ -21,7 +21,10 @@ export default (state = initialState, action) => {
         isLoading: false,
       });
     case 'FETCH_PROFILE_FAILED':
-      return action.err;
+      return _.assign({}, state, {
+        isLoading: false,
+        error: { message: '通信エラー' },
+      });
     default:
       return state;
   }
