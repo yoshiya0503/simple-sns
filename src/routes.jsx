@@ -5,9 +5,9 @@
  */
 import React, { Component } from 'react';
 import { Router, Route, hashHistory } from 'react-router';
-import Layout from './components/Layout';
 import NotFound from './components/NotFound';
 import Login from './containers/Login';
+import Layout from './containers/Layout';
 import Profile from './containers/Profile';
 import Feed from './containers/Feed';
 

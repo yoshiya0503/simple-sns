@@ -6,26 +6,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Login from '../components/Login';
-import { increments, decrements } from '../actions/login';
+import Dialog from '../components/Dialog';
+import { createSession, fetchLocalSession } from '../actions/session';
+import { closeDialog } from '../actions/dialog';
 
 const mapStateToProps = state => ({
-  test: state.login.test,
+  isDialog: state.dialog.isDialog,
+  isLoading: state.session.isLoading,
+  error: state.session.error,
+  token: state.session.token,
 });
 
+
 const mapDispatchToProps = dispatch => ({
-  increments: () => {
-    dispatch(increments(10));
+  login: (email, password) => {
+    dispatch(createSession(email, password));
   },
-  decrements: () => {
-    dispatch(decrements(4));
+  closeDialog: () => {
+    dispatch(closeDialog());
+  },
+  fetchSession: () => {
+    dispatch(fetchLocalSession());
   },
 });
 
 class LoginContainer extends Component {
 
+  componentWillMount() {
+    if (this.props.token) {
+      this.props.router.push('/feed');
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.token) {
+      this.props.router.push('/feed');
+    }
+  }
+
   render() {
+    if (this.props.token) {
+      return null;
+    }
     return (
-      <Login increments={this.props.increments} test={this.props.test} />
+      <div>
+        <Login login={this.props.login} />
+        <Dialog
+          isDialog={this.props.isDialog}
+          message={this.props.error.message}
+          closeDialog={this.props.closeDialog}
+        />
+      </div>
     );
   }
 }

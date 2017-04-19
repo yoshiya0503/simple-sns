@@ -6,7 +6,7 @@
 import _ from 'lodash';
 
 const initialState = {
-  isDialog: true,
+  isDialog: false,
 };
 
 export default (state = initialState, action) => {

@@ -5,6 +5,8 @@
  */
 
 import axios from 'axios';
+import { openDialog } from './dialog';
+import { startScheduler } from '../actions/scheduler';
 
 const fetchProfileLoading = () => (
   {
@@ -29,14 +31,21 @@ const fetchProfileFailed = err => (
   }
 );
 
+// TODO shceduler はミドルウェアに
+// TODO LoadingIndicator は ミドルウェアに
 export default () => (
   (dispatch) => {
     dispatch(fetchProfileLoading());
     const url = `http://${process.env.HOST}/api/v1/profile`;
-    return axios.get(url).then((res) => {
+    const session = { TOKEN: localStorage.getItem('token') };
+    return axios.get(url, { headers: session }).then((res) => {
+      dispatch(startScheduler(1000, () => {
+        console.log('hoge');
+      }));
       dispatch(fetchProfileSuccess(res.data));
     }).catch((err) => {
       dispatch(fetchProfileFailed(err));
+      dispatch(openDialog());
     });
   }
 );

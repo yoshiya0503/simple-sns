@@ -16,15 +16,9 @@ export default (state = initialState, action) => {
     case 'FETCH_PROFILE_LOADING':
       return _.assign({}, state, { isLoading: true });
     case 'FETCH_PROFILE_SUCCESS':
-      return _.assign({}, state, {
-        profile: action.profile,
-        isLoading: false,
-      });
+      return _.assign({}, state, { profile: action.profile, isLoading: false });
     case 'FETCH_PROFILE_FAILED':
-      return _.assign({}, state, {
-        isLoading: false,
-        error: { message: '通信エラー' },
-      });
+      return _.assign({}, state, { isLoading: false, error: { message: '通信エラー' } });
     default:
       return state;
   }

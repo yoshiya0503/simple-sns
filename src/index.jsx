@@ -8,6 +8,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
+import axios from 'axios';
 import thunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import reducer from './reducers';
@@ -21,6 +22,9 @@ const store = createStore(
     logger,
   ),
 );
+
+const token = localStorage.getItem('token');
+axios.defaults.headers.common['TOKEN'] = token;
 
 
 class App extends Component {

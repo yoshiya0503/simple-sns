@@ -7,14 +7,14 @@
 const start = scheduler => (
   {
     type: 'START_SCHEDULER',
-    isScheduled: scheduler,
+    scheduler,
   }
 );
 
-const stop = () => (
+const stop = scheduler => (
   {
     type: 'STOP_SCHEDULER',
-    iScheduled: false,
+    scheduler,
   }
 );
 
@@ -30,8 +30,9 @@ export const startScheduler = (interval = 1000, callback) => (
   }
 );
 
-export const stopScheduler = () => (
+export const stopScheduler = scheduler => (
   (dispatch) => {
-    clearInterval();
+    clearInterval(scheduler);
+    dispatch(stop(null));
   }
 );

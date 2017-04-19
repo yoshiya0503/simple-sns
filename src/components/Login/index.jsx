@@ -40,18 +40,53 @@ const password = {
 
 class Login extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+    };
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.login = this.login.bind(this);
+  }
+
+  handleEmailChange(e) {
+    this.setState({
+      email: e.target.value,
+    });
+  }
+
+  handlePasswordChange(e) {
+    this.setState({
+      password: e.target.value,
+    });
+  }
+
+  login() {
+    this.props.login(this.state.email, this.state.password);
+  }
+
   render() {
     return (
       <div>
         <Paper style={styles} zDepth={3} >
           <h1 style={h1} > Login </h1>
           <Divider />
-          <h3> Login_Counts: {this.props.test} </h3>
+          <TextField
+            style={mail}
+            hintText="Mail Address"
+            value={this.state.email}
+            onChange={this.handleEmailChange}
+          />
           <br />
-          <TextField style={mail} hintText="Mail Address" />
-          <br />
-          <TextField style={password} hintText="Password" />
-          <FlatButton label="Default" onClick={this.props.increments} />
+          <TextField
+            style={password}
+            hintText="Password"
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+          />
+          <FlatButton label="ログイン" onClick={this.login} />
         </Paper>
         <Footer />
       </div>

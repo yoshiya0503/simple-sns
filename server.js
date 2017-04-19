@@ -85,19 +85,29 @@ var profile = new Profile();
 
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Token, Accept');
   next();
 });
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(morgan({ format: 'dev', immediate: true }));
 
-server.get('/', (req, res) => {
-  res.json({});
+server.post('/api/v1/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  if (email === 'myon53@gmail.com' && password === 'password') {
+    return res.json({ token: 'this_is_token' });
+  }
+  return res.send(401, {});
 });
 
 // CRUD of profile
 server.get('/api/v1/profile', (req, res) => {
+  const token = req.get('TOKEN');
+  console.log(token);
+  if (token !== 'this_is_token') {
+    return res.send(401, {});
+  }
   setTimeout(() => {
     return res.json(profile.fetch());
   }, 1000);
@@ -105,6 +115,11 @@ server.get('/api/v1/profile', (req, res) => {
 
 // CRUD of feeds
 server.get('/api/v1/feeds', (req, res) => {
+  const token = req.get('TOKEN');
+  console.log(JSON.stringify(token));
+  if (token !== 'this_is_token') {
+    return res.send(401, {});
+  }
   res.json(feed.fetch());
 });
 server.get('/api/v1/feeds/:id', (req, res) => {
