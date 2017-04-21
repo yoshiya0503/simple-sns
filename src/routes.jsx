@@ -4,7 +4,8 @@
  * @author Yoshiya Ito <myon53@gmail.com>
  */
 import React, { Component } from 'react';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route } from 'react-router';
+import { history } from './store';
 import NotFound from './components/NotFound';
 import Login from './containers/Login';
 import Layout from './containers/Layout';
@@ -16,7 +17,7 @@ class Routes extends Component {
 
   render() {
     return (
-      <Router history={hashHistory} >
+      <Router history={history} >
         <Route path="/login" component={Login} />
         <Route path="/" component={Layout} >
           <Route path="/profile" component={Profile} />

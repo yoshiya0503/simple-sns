@@ -7,18 +7,15 @@ import _ from 'lodash';
 
 const initialState = {
   profile: {},
-  isLoading: true,
   error: {},
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_PROFILE_LOADING':
-      return _.assign({}, state, { isLoading: true });
     case 'FETCH_PROFILE_SUCCESS':
-      return _.assign({}, state, { profile: action.profile, isLoading: false });
+      return _.assign({}, state, { profile: action.profile });
     case 'FETCH_PROFILE_FAILED':
-      return _.assign({}, state, { isLoading: false, error: { message: '通信エラー' } });
+      return _.assign({}, state, { error: { message: '通信エラー' } });
     default:
       return state;
   }

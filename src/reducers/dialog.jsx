@@ -15,10 +15,6 @@ export default (state = initialState, action) => {
       return _.assign({}, state, { isDialog: true });
     case 'CLOSE_DIALOG':
       return _.assign({}, state, { isDialog: false });
-    case 'DIALOG':
-      return _.assign({}, state, {
-        isDialog: !state.isDialog,
-      });
     default:
       return state;
   }

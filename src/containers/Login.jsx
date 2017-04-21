@@ -5,14 +5,14 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import Login from '../components/Login';
 import Dialog from '../components/Dialog';
-import { createSession, fetchLocalSession } from '../actions/session';
 import { closeDialog } from '../actions/dialog';
+import { createSession, fetchLocalSession } from '../actions/session';
 
 const mapStateToProps = state => ({
   isDialog: state.dialog.isDialog,
-  isLoading: state.session.isLoading,
   error: state.session.error,
   token: state.session.token,
 });
@@ -21,6 +21,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   login: (email, password) => {
     dispatch(createSession(email, password));
+  },
+  redirectFeed: () => {
+    dispatch(push('/feed'));
   },
   closeDialog: () => {
     dispatch(closeDialog());
@@ -32,15 +35,15 @@ const mapDispatchToProps = dispatch => ({
 
 class LoginContainer extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.token) {
-      this.props.router.push('/feed');
+      this.props.redirectFeed();
     }
   }
 
   componentDidUpdate() {
     if (this.props.token) {
-      this.props.router.push('/feed');
+      this.props.redirectFeed();
     }
   }
 

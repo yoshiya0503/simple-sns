@@ -1,31 +1,18 @@
 /**
  * @fileoverview App.jsx
- * @name App.jsx
+ * @name index.jsx
  * @author Yoshiya Ito <myon53@gmail.com>
  */
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
-import axios from 'axios';
-import thunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import reducer from './reducers';
+import axios from 'axios';
+import { store } from './store';
 import Routes from './routes';
-
-const logger = createLogger();
-const store = createStore(
-  reducer,
-  applyMiddleware(
-    thunk,
-    logger,
-  ),
-);
 
 const token = localStorage.getItem('token');
 axios.defaults.headers.common['TOKEN'] = token;
-
 
 class App extends Component {
 

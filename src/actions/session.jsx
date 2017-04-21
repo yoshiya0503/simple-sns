@@ -6,12 +6,7 @@
 
 import axios from 'axios';
 import { openDialog } from './dialog';
-
-const fetchSessionLoading = () => (
-  {
-    type: 'FETCH_SESSION_LOADING',
-  }
-);
+import { startLoading, stopLoading } from './loading';
 
 const fetchSession = token => (
   {
@@ -49,13 +44,15 @@ export const fetchLocalSession = () => (
 
 export const createSession = (email, password) => (
   (dispatch) => {
-    dispatch(fetchSessionLoading());
     const url = `http://${process.env.HOST}/api/v1/login`;
     const body = { email, password };
+    dispatch(startLoading());
     return axios.post(url, body).then((res) => {
       localStorage.setItem('token', res.data.token);
+      dispatch(stopLoading());
       dispatch(createSessionSuccess(res.data.token));
     }).catch((err) => {
+      dispatch(stopLoading());
       dispatch(createSessionFailed(err));
       dispatch(openDialog());
     });

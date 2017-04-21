@@ -12,8 +12,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_FEEDS_LOADING':
-      return state;
     case 'FETCH_FEEDS_SUCCESS':
       return _.assign({}, state, { feeds: action.feeds });
     case 'FETCH_FEEDS_FAILED':

@@ -6,20 +6,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FeedItems } from '../components/Feed';
+import LoadingIndicator from '../components/LoadingIndicator';
 import fetchFeeds from '../actions/feed';
-import Dialog from '../components/Dialog';
-import { closeDialog } from '../actions/dialog';
 
 const mapStateToProps = state => ({
-  isDialog: state.dialog.isDialog,
-  error: state.feed.error,
+  isLoading: state.loading.isLoading,
   feeds: state.feed.feeds,
 });
 
 const mapDispatchToProps = dispatch => ({
-  closeDialog: () => {
-    dispatch(closeDialog());
-  },
   fetchFeeds: () => {
     dispatch(fetchFeeds());
   },
@@ -27,21 +22,15 @@ const mapDispatchToProps = dispatch => ({
 
 class FeedContainer extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchFeeds();
   }
 
   render() {
-    return (
-      <div>
-        <FeedItems feeds={this.props.feeds}/>
-        <Dialog
-          isDialog={this.props.isDialog}
-          message={this.props.error.message}
-          closeDialog={this.props.closeDialog}
-        />
-      </div>
-    );
+    if (this.props.isLoading) {
+      return <LoadingIndicator />;
+    }
+    return <FeedItems feeds={this.props.feeds} />;
   }
 }
 
