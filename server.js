@@ -49,8 +49,8 @@ server.get('/api/v1/profile', (req, res) => {
 
 // CRUD of demographocs
 server.get('/api/v1/demographics', (req, res) => {
-  profile.list = _.concat(profile.list, _.sample(profile.list));
-  return res.json(profile.fetchList());
+  //profile.list = _.concat(profile.list, _.sample(profile.list));
+  return res.json(_.sample(profile.fetchList()));
 });
 
 // CRUD of articles
