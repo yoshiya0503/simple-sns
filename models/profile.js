@@ -9,6 +9,18 @@ class Profile {
     this.data = {
       id: 1,
       name: 'yoshiya ito',
+      nickname: 'yoshiya ito',
+      avatar: {
+        url: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
+      },
+      email: 'myon53@gmail.com',
+      projects: [
+        {
+          id: 1,
+          name: 'SNS',
+          key: 'SNS',
+        },
+      ],
       profile: '六畳一間の世界征服',
       image: 'https://pbs.twimg.com/profile_images/755059325396094976/Vzvbd-6X_400x400.jpg',
     };

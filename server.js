@@ -47,6 +47,17 @@ server.get('/api/v1/profile', (req, res) => {
   }, 1000);
 });
 
+server.get('/api/v1/users/me', (req, res) => {
+  const token = req.get('TOKEN');
+  console.log(token);
+  if (token !== 'this_is_token') {
+    return res.send(401, {});
+  }
+  setTimeout(() => {
+    return res.json(profile.fetch());
+  }, 1000);
+});
+
 // CRUD of demographocs
 server.get('/api/v1/demographics', (req, res) => {
   //profile.list = _.concat(profile.list, _.sample(profile.list));
