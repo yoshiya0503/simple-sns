@@ -8,6 +8,20 @@ const _ = require('lodash');
 
 class Article {
   constructor() {
+    this.data = {
+      'project_id': 1,
+      'id': 26,
+      'url': 'https://cakes.mu/posts/34',
+      'title': '第１回　AV監督のくせに恋愛を哲学する【恋と性愛の研究と実践】 | キモい男、ウザい女。 | 二村ヒトシ | cakes（ケイクス）',
+      'pubDate': '2012-11-02T00:00:00+09:00',
+      'thumbnailUrl': 'https://d2oe4hwshyef6j.cloudfront.net/production/uploads/image/series_rectangle/image/246/ogp_249dfa853e1548046062035f72a21b74eeb51160',
+      'sharesCount': {
+        'twitter': 1,
+        'facebook': '***',
+      },
+      'pageViews': '****',
+      "averagePagePeriod": "01:21",
+    };
     this.list = [
       {
         'project_id': 1,
@@ -229,6 +243,10 @@ class Article {
 
   fetchList() {
     return this.list;
+  }
+
+  fetch() {
+    return this.data;
   }
 }
 

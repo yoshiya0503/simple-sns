@@ -19,6 +19,7 @@ var article = new Article();
 
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Token, X-Mg-Token, Accept');
   next();
 });
@@ -35,6 +36,10 @@ server.post('/api/v1/login', (req, res) => {
   return res.send(401, {});
 });
 
+server.delete('/api/v1/logout', (req, res) => {
+  return res.json({ token: null });
+})
+
 // CRUD of profile
 server.get('/api/v1/profile', (req, res) => {
   const token = req.get('TOKEN');
@@ -48,11 +53,6 @@ server.get('/api/v1/profile', (req, res) => {
 });
 
 server.get('/api/v1/users/me', (req, res) => {
-  const token = req.get('TOKEN');
-  console.log(token);
-  if (token !== 'this_is_token') {
-    return res.send(401, {});
-  }
   setTimeout(() => {
     return res.json(profile.fetch());
   }, 1000);
@@ -68,6 +68,13 @@ server.get('/api/v1/demographics', (req, res) => {
 server.get('/api/v1/projects/:id/articles', (req, res) => {
   setTimeout(() => {
     return res.json(article.fetchList());
+  }, 1000);
+});
+
+// CRUD of articles
+server.get('/api/v1/projects/:project_id/articles/:article_id', (req, res) => {
+  setTimeout(() => {
+    return res.json(article.fetch());
   }, 1000);
 });
 
